@@ -252,5 +252,9 @@
     </article>
   </section>
 
-  <app-action-bar />
+  @if (showEventWorkspace()) {
+    <app-event-workspace />
+  }
+
+  <app-action-bar (createEvent)="openEventWorkspace()" />
 </main>

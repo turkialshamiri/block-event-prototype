@@ -1,5 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { ActionBarComponent } from '../action-bar/action-bar.component';
+import { EventWorkspaceComponent } from '../event-workspace/event-workspace.component';
 
 interface BreadcrumbItem {
   label: string;
@@ -13,7 +14,7 @@ interface SelectOption {
 
 @Component({
   selector: 'app-main-content',
-  imports: [ActionBarComponent],
+  imports: [ActionBarComponent, EventWorkspaceComponent],
   templateUrl: './main-content.component.html',
   styleUrl: './main-content.component.scss',
 })
@@ -100,6 +101,11 @@ export class MainContentComponent {
   protected readonly defaultSalesManager = 'mohammed-alotaibi';
 
   protected readonly selectedBlockStatus = signal(this.defaultBlockStatus);
+  protected readonly showEventWorkspace = signal(false);
+
+  protected openEventWorkspace(): void {
+    this.showEventWorkspace.set(true);
+  }
 
   protected onBlockStatusChange(event: Event): void {
     const select = event.target as HTMLSelectElement | null;
