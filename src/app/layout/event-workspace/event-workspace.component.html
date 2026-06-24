@@ -242,6 +242,95 @@
       </div>
     </article>
 
+    <article class="content-card">
+      <div class="content-card__header">
+        <i class="pi pi-sitemap content-card__title-icon" aria-hidden="true"></i>
+        <h3 class="content-card__title">المسؤوليات والعلاقات</h3>
+      </div>
+
+      <div class="form-fields form-fields--grid">
+        <div class="form-field">
+          <label class="form-label" for="event-manager">مسؤول الفعالية</label>
+          <div class="searchable-select">
+            <div class="searchable-select__control">
+              <select id="event-manager" class="form-control searchable-select__select">
+                @for (option of eventManagers; track option.value) {
+                  <option [value]="option.value" [selected]="option.value === defaultEventManager">
+                    {{ option.label }}
+                  </option>
+                }
+              </select>
+              <i class="pi pi-chevron-down form-control__icon" aria-hidden="true"></i>
+            </div>
+            <button type="button" class="searchable-select__btn" aria-label="بحث عن مسؤول الفعالية">
+              <i class="pi pi-search" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="parent-event">
+            الفعالية الرئيسية
+            <span class="form-label__optional">(اختياري)</span>
+          </label>
+          <div class="form-control-wrap">
+            <select id="parent-event" class="form-control">
+              @for (option of parentEvents; track option.value) {
+                <option [value]="option.value">{{ option.label }}</option>
+              }
+            </select>
+            <i class="pi pi-chevron-down form-control__icon" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+
+      <div class="options-section">
+        <h4 class="options-section__title">قسم الخيارات</h4>
+
+        <div class="toggle-list">
+          <div class="toggle-option">
+            <div class="toggle-option__content">
+              <span class="toggle-option__label">فعالية صاخبة</span>
+              <span class="toggle-option__description">
+                تفعيل إشعار الفريق التشغيلي بمستوى الضوضاء المتوقع
+              </span>
+            </div>
+            <label class="ios-toggle" aria-label="فعالية صاخبة">
+              <input
+                type="checkbox"
+                class="ios-toggle__input"
+                [checked]="isNoisyEvent()"
+                (change)="toggleNoisyEvent($event)"
+              />
+              <span class="ios-toggle__track" aria-hidden="true">
+                <span class="ios-toggle__thumb"></span>
+              </span>
+            </label>
+          </div>
+
+          <div class="toggle-option">
+            <div class="toggle-option__content">
+              <span class="toggle-option__label">قفل القاعة</span>
+              <span class="toggle-option__description">
+                منع حجز القاعة لأي فعالية أخرى خلال نفس الفترة
+              </span>
+            </div>
+            <label class="ios-toggle" aria-label="قفل القاعة">
+              <input
+                type="checkbox"
+                class="ios-toggle__input"
+                [checked]="isHallLocked()"
+                (change)="toggleHallLock($event)"
+              />
+              <span class="ios-toggle__track" aria-hidden="true">
+                <span class="ios-toggle__thumb"></span>
+              </span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </article>
+
     <article class="content-card event-section--full">
       <div class="content-card__header">
         <i class="pi pi-chart-bar content-card__title-icon" aria-hidden="true"></i>

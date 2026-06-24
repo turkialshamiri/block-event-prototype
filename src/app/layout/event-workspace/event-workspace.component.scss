@@ -129,6 +129,114 @@
   gap: var(--ef-space-3);
 }
 
+.form-label__optional {
+  font-weight: 400;
+  color: var(--ef-color-text-muted);
+  margin-right: 4px;
+}
+
+.options-section {
+  margin-top: var(--ef-space-4);
+  padding-top: var(--ef-space-4);
+  border-top: 1px solid var(--ef-color-border);
+}
+
+.options-section__title {
+  margin: 0 0 var(--ef-space-3);
+  font-size: var(--ef-font-sm);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--ef-color-text);
+}
+
+.toggle-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ef-space-3);
+}
+
+.toggle-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ef-space-3);
+  padding: var(--ef-space-3);
+  background: var(--ef-color-surface-muted);
+  border: 1px solid var(--ef-color-border);
+  border-radius: var(--ef-radius-md);
+}
+
+.toggle-option__content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 0;
+  flex: 1;
+}
+
+.toggle-option__label {
+  font-size: var(--ef-font-base);
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--ef-color-text);
+}
+
+.toggle-option__description {
+  font-size: var(--ef-font-xs);
+  font-weight: 400;
+  line-height: 1.45;
+  color: var(--ef-color-text-secondary);
+}
+
+.ios-toggle {
+  position: relative;
+  display: inline-flex;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.ios-toggle__input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+  pointer-events: none;
+}
+
+.ios-toggle__track {
+  position: relative;
+  display: block;
+  width: 51px;
+  height: 31px;
+  background: #e5e5ea;
+  border-radius: 999px;
+  transition: background-color 0.3s ease;
+}
+
+.ios-toggle__thumb {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  width: 27px;
+  height: 27px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
+  transition: transform 0.3s ease;
+}
+
+.ios-toggle__input:checked + .ios-toggle__track {
+  background: #34c759;
+}
+
+.ios-toggle__input:checked + .ios-toggle__track .ios-toggle__thumb {
+  transform: translateX(-20px);
+}
+
+.ios-toggle__input:focus-visible + .ios-toggle__track {
+  box-shadow: var(--ef-shadow-focus);
+}
+
 .availability-indicator {
   display: inline-flex;
   align-items: center;

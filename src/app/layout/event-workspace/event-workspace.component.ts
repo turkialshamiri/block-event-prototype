@@ -75,11 +75,29 @@ export class EventWorkspaceComponent {
     { label: 'نسبة الخصم', value: '10%' },
   ];
 
+  protected readonly eventManagers: SelectOption[] = [
+    { label: 'محمد العتيبي', value: 'mohammed-alotaibi' },
+    { label: 'سارة القحطاني', value: 'sarah-alqahtani' },
+    { label: 'خالد الحربي', value: 'khalid-alharbi' },
+    { label: 'نورة السبيعي', value: 'noura-alsubaie' },
+  ];
+
+  protected readonly parentEvents: SelectOption[] = [
+    { label: '— اختياري —', value: '' },
+    { label: 'حفل زفاف العائلة المالكة', value: 'evt-2027-000120' },
+    { label: 'مؤتمر الضيافة السنوي', value: 'evt-2027-000098' },
+    { label: 'ملتقى الشركاء الاستراتيجي', value: 'evt-2027-000076' },
+  ];
+
+  protected readonly defaultEventManager = 'mohammed-alotaibi';
   protected readonly defaultEventStatus = 'confirmed';
   protected readonly defaultEventType = 'wedding';
   protected readonly defaultMainHall = 'royal-hall';
   protected readonly defaultPricingType = 'package';
   protected readonly defaultRevenueType = 'package';
+
+  protected readonly isNoisyEvent = signal(false);
+  protected readonly isHallLocked = signal(true);
 
   protected readonly mainHallAvailability = signal<HallAvailability>('available');
 
@@ -91,5 +109,17 @@ export class EventWorkspaceComponent {
     this.mainHallAvailability.set(
       this.conflictHalls.has(select.value) ? 'conflict' : 'available',
     );
+  }
+
+  protected toggleNoisyEvent(event: Event): void {
+    const input = event.target as HTMLInputElement | null;
+    if (!input) return;
+    this.isNoisyEvent.set(input.checked);
+  }
+
+  protected toggleHallLock(event: Event): void {
+    const input = event.target as HTMLInputElement | null;
+    if (!input) return;
+    this.isHallLocked.set(input.checked);
   }
 }
