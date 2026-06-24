@@ -29,10 +29,194 @@
   </header>
 
   <section class="content-grid" aria-label="أقسام النموذج">
-    @for (card of cards; track card.title) {
-      <article class="content-card">
-        <h2 class="content-card__title">{{ card.title }}</h2>
-      </article>
-    }
+    <article class="content-card">
+      <h2 class="content-card__title">معلومات المنشأة</h2>
+      <div class="form-fields">
+        <div class="form-field">
+          <label class="form-label" for="property">المنشأة</label>
+          <div class="form-control-wrap">
+            <select id="property" class="form-control">
+              @for (option of properties; track option.value) {
+                <option [value]="option.value">{{ option.label }}</option>
+              }
+            </select>
+            <i class="pi pi-chevron-down form-control__icon" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <div class="form-row form-row--split">
+          <div class="form-field form-field--nights">
+            <label class="form-label" for="nights">عدد الليالي</label>
+            <input
+              id="nights"
+              class="form-control form-control--readonly"
+              type="text"
+              value="2"
+              readonly
+            />
+          </div>
+          <div class="form-field form-field--date">
+            <label class="form-label" for="start-date">تاريخ البداية</label>
+            <div class="form-control-wrap">
+              <input id="start-date" class="form-control form-control--date" type="date" value="2026-06-24" />
+              <i class="pi pi-calendar form-control__icon" aria-hidden="true"></i>
+            </div>
+          </div>
+          <div class="form-field form-field--date">
+            <label class="form-label" for="end-date">تاريخ النهاية</label>
+            <div class="form-control-wrap">
+              <input id="end-date" class="form-control form-control--date" type="date" value="2026-06-26" />
+              <i class="pi pi-calendar form-control__icon" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="block-name">اسم البلوك</label>
+          <input
+            id="block-name"
+            class="form-control"
+            type="text"
+            placeholder="أدخل اسم البلوك"
+          />
+        </div>
+      </div>
+    </article>
+
+    <article class="content-card">
+      <h2 class="content-card__title">الشركة وجهة الاتصال</h2>
+      <div class="form-fields">
+        <div class="form-field">
+          <label class="form-label" for="account">الحساب</label>
+          <div class="searchable-select">
+            <div class="searchable-select__control">
+              <select id="account" class="form-control searchable-select__select">
+                @for (option of accounts; track option.value) {
+                  <option [value]="option.value">{{ option.label }}</option>
+                }
+              </select>
+              <i class="pi pi-chevron-down form-control__icon" aria-hidden="true"></i>
+            </div>
+            <button type="button" class="searchable-select__btn" aria-label="بحث عن حساب">
+              <i class="pi pi-search" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="contact">جهة الاتصال</label>
+          <div class="searchable-select">
+            <div class="searchable-select__control">
+              <select id="contact" class="form-control searchable-select__select">
+                @for (option of contacts; track option.value) {
+                  <option [value]="option.value">{{ option.label }}</option>
+                }
+              </select>
+              <i class="pi pi-chevron-down form-control__icon" aria-hidden="true"></i>
+            </div>
+            <button type="button" class="searchable-select__btn" aria-label="بحث عن جهة اتصال">
+              <i class="pi pi-search" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="content-card">
+      <h2 class="content-card__title">معلومات البلوك</h2>
+      <div class="form-fields form-fields--grid">
+        <div class="form-field">
+          <label class="form-label" for="block-code">رمز البلوك</label>
+          <input
+            id="block-code"
+            class="form-control form-control--readonly"
+            type="text"
+            value="BB-2026-0142"
+            readonly
+          />
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="block-status">حالة البلوك</label>
+          <div class="form-control-wrap">
+            <select id="block-status" class="form-control">
+              @for (option of blockStatuses; track option.value) {
+                <option [value]="option.value">{{ option.label }}</option>
+              }
+            </select>
+            <i class="pi pi-chevron-down form-control__icon" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="sales-manager">مدير المبيعات</label>
+          <div class="form-control-wrap">
+            <select id="sales-manager" class="form-control">
+              @for (option of salesManagers; track option.value) {
+                <option [value]="option.value">{{ option.label }}</option>
+              }
+            </select>
+            <i class="pi pi-chevron-down form-control__icon" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="market">السوق</label>
+          <div class="form-control-wrap">
+            <select id="market" class="form-control">
+              @for (option of markets; track option.value) {
+                <option [value]="option.value">{{ option.label }}</option>
+              }
+            </select>
+            <i class="pi pi-chevron-down form-control__icon" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="booking-source">مصدر الحجز</label>
+          <div class="form-control-wrap">
+            <select id="booking-source" class="form-control">
+              @for (option of bookingSources; track option.value) {
+                <option [value]="option.value">{{ option.label }}</option>
+              }
+            </select>
+            <i class="pi pi-chevron-down form-control__icon" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="booking-type">نوع الحجز</label>
+          <div class="form-control-wrap">
+            <select id="booking-type" class="form-control">
+              @for (option of bookingTypes; track option.value) {
+                <option [value]="option.value">{{ option.label }}</option>
+              }
+            </select>
+            <i class="pi pi-chevron-down form-control__icon" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <article class="content-card">
+      <h2 class="content-card__title">المتابعة والقرار</h2>
+      <div class="form-fields form-fields--grid">
+        <div class="form-field">
+          <label class="form-label" for="decision-date">تاريخ القرار</label>
+          <div class="form-control-wrap">
+            <input id="decision-date" class="form-control form-control--date" type="date" value="2026-06-20" />
+            <i class="pi pi-calendar form-control__icon" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="follow-up-date">تاريخ المتابعة</label>
+          <div class="form-control-wrap">
+            <input id="follow-up-date" class="form-control form-control--date" type="date" value="2026-06-28" />
+            <i class="pi pi-calendar form-control__icon" aria-hidden="true"></i>
+          </div>
+        </div>
+      </div>
+    </article>
   </section>
 </main>
