@@ -7,10 +7,6 @@
   animation: eventSummaryEnter 300ms ease forwards;
 }
 
-.event-summary-panel .summary-card {
-  padding: var(--ef-space-4);
-}
-
 @keyframes eventSummaryEnter {
   from {
     opacity: 0;

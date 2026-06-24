@@ -1,9 +1,18 @@
 <footer class="action-bar" dir="rtl">
   <div class="action-bar__actions">
-    <button type="button" class="action-btn action-btn--cancel">إلغاء</button>
-    <button type="button" class="action-btn action-btn--create" (click)="onCreateEvent()">
-      حفظ وإنشاء فعالية
-    </button>
-    <button type="button" class="action-btn action-btn--save">حفظ</button>
+    @if (showEventWorkspace()) {
+      <button type="button" class="action-btn action-btn--cancel">إلغاء</button>
+      <button type="button" class="action-btn action-btn--outline">إنشاء فعالية فرعية</button>
+      <button type="button" class="action-btn action-btn--create action-btn--create-wide">
+        حفظ وإنشاء فعالية جديدة
+      </button>
+      <button type="button" class="action-btn action-btn--save action-btn--save-wide">حفظ الفعالية</button>
+    } @else {
+      <button type="button" class="action-btn action-btn--cancel">إلغاء</button>
+      <button type="button" class="action-btn action-btn--create" (click)="onCreateEvent()">
+        حفظ وإنشاء فعالية
+      </button>
+      <button type="button" class="action-btn action-btn--save">حفظ</button>
+    }
   </div>
 </footer>
