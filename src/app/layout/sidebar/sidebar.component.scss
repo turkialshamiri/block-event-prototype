@@ -1,0 +1,230 @@
+:host {
+  display: block;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 280px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(180deg, #071a35 0%, #0b2d57 100%);
+  border-top-left-radius: 24px;
+  border-bottom-left-radius: 24px;
+  box-shadow: -2px 0 16px rgba(0, 0, 0, 0.14);
+  color: #ffffff;
+  overflow: hidden;
+  z-index: 1000;
+  font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+}
+
+.sidebar__glow {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse 120% 40% at 50% 0%, rgba(212, 160, 23, 0.1) 0%, transparent 55%),
+    radial-gradient(ellipse 80% 50% at 100% 50%, rgba(255, 255, 255, 0.04) 0%, transparent 60%);
+}
+
+.sidebar__brand {
+  position: relative;
+  z-index: 1;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 0 20px;
+  flex-shrink: 0;
+}
+
+.sidebar__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  flex-shrink: 0;
+
+  .pi {
+    font-size: 28px;
+    color: #d4a017;
+  }
+}
+
+.sidebar__brand-text {
+  min-width: 0;
+}
+
+.sidebar__title {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  color: #ffffff;
+  letter-spacing: 0.02em;
+}
+
+.sidebar__subtitle {
+  margin: 4px 0 0;
+  font-size: 0.75rem;
+  font-weight: 400;
+  line-height: 1.4;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+.sidebar__nav {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding: 8px 12px;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+
+  &::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+  }
+}
+
+.sidebar__menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.sidebar__menu-item {
+  margin: 0;
+}
+
+.sidebar__link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  height: 52px;
+  padding: 16px;
+  border: none;
+  border-radius: 14px;
+  background: transparent;
+  color: #ffffff;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: right;
+  cursor: pointer;
+  transition: transform 300ms ease, background-color 300ms ease, box-shadow 300ms ease;
+
+  &:hover {
+    transform: translateX(-4px) scale(1.02);
+    background: rgba(255, 255, 255, 0.06);
+  }
+
+  &--active {
+    background: #d4a017;
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(212, 160, 23, 0.28);
+
+    &:hover {
+      background: #d4a017;
+      transform: translateX(-4px) scale(1.02);
+    }
+  }
+}
+
+.sidebar__icon {
+  font-size: 20px;
+  width: 20px;
+  height: 20px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sidebar__label {
+  flex: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.sidebar__footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  padding: 16px 12px 20px;
+  flex-shrink: 0;
+}
+
+.sidebar__collapse-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 50%;
+  background: transparent;
+  color: #ffffff;
+  cursor: pointer;
+  transition: transform 300ms ease, background-color 300ms ease, border-color 300ms ease;
+
+  .pi {
+    font-size: 16px;
+  }
+
+  &:hover {
+    transform: scale(1.02);
+    background: rgba(255, 255, 255, 0.08);
+    border-color: rgba(255, 255, 255, 0.3);
+  }
+}
+
+.sidebar__collapse-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sidebar--collapsed {
+  width: 72px;
+
+  .sidebar__brand-text,
+  .sidebar__label {
+    display: none;
+  }
+
+  .sidebar__brand {
+    justify-content: center;
+    padding: 0;
+  }
+
+  .sidebar__link {
+    justify-content: center;
+    padding: 16px 0;
+  }
+
+  .sidebar__collapse-btn {
+    width: 44px;
+  }
+}

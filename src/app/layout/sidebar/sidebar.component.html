@@ -1,0 +1,50 @@
+<aside class="sidebar" [class.sidebar--collapsed]="collapsed()" dir="rtl">
+  <div class="sidebar__glow" aria-hidden="true"></div>
+
+  <header class="sidebar__brand">
+    <div class="sidebar__logo" aria-hidden="true">
+      <i class="pi pi-sparkles"></i>
+    </div>
+    <div class="sidebar__brand-text">
+      <h1 class="sidebar__title">EventFlow</h1>
+      <p class="sidebar__subtitle">إدارة الفنادق والفعاليات</p>
+    </div>
+  </header>
+
+  <nav class="sidebar__nav" aria-label="القائمة الرئيسية">
+    <ul class="sidebar__menu">
+      @for (item of menuItems; track item.id) {
+        <li class="sidebar__menu-item">
+          <button
+            type="button"
+            class="sidebar__link"
+            [class.sidebar__link--active]="activeItemId() === item.id"
+            [attr.aria-current]="activeItemId() === item.id ? 'page' : null"
+            (click)="setActive(item.id)"
+          >
+            <i class="sidebar__icon" [class]="item.icon" aria-hidden="true"></i>
+            <span class="sidebar__label">{{ item.label }}</span>
+          </button>
+        </li>
+      }
+    </ul>
+  </nav>
+
+  <footer class="sidebar__footer">
+    <button
+      type="button"
+      class="sidebar__collapse-btn"
+      [attr.aria-label]="collapsed() ? 'توسيع القائمة' : 'طي القائمة'"
+      [attr.aria-expanded]="!collapsed()"
+      (click)="toggleCollapse()"
+    >
+      <i
+        class="pi"
+        [class.pi-angle-double-right]="!collapsed()"
+        [class.pi-angle-double-left]="collapsed()"
+        aria-hidden="true"
+      ></i>
+      <span class="sidebar__collapse-label">طي القائمة</span>
+    </button>
+  </footer>
+</aside>
