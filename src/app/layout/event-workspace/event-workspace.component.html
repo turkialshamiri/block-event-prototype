@@ -139,5 +139,107 @@
         </div>
       </div>
     </article>
+
+    <article class="content-card">
+      <div class="content-card__header">
+        <i class="pi pi-building content-card__title-icon" aria-hidden="true"></i>
+        <h3 class="content-card__title">القاعة والتجهيز</h3>
+      </div>
+
+      <div class="form-fields form-fields--grid">
+        <div class="form-field">
+          <label class="form-label" for="main-hall">القاعة الرئيسية</label>
+          <div class="searchable-select">
+            <div class="searchable-select__control">
+              <select
+                id="main-hall"
+                class="form-control searchable-select__select"
+                (change)="onMainHallChange($event)"
+              >
+                @for (option of mainHalls; track option.value) {
+                  <option [value]="option.value" [selected]="option.value === defaultMainHall">
+                    {{ option.label }}
+                  </option>
+                }
+              </select>
+              <i class="pi pi-chevron-down form-control__icon" aria-hidden="true"></i>
+            </div>
+            <button type="button" class="searchable-select__btn" aria-label="بحث عن القاعة الرئيسية">
+              <i class="pi pi-search" aria-hidden="true"></i>
+            </button>
+          </div>
+          <div
+            class="availability-indicator"
+            [class.availability-indicator--available]="mainHallAvailability() === 'available'"
+            [class.availability-indicator--conflict]="mainHallAvailability() === 'conflict'"
+            role="status"
+          >
+            <span class="availability-indicator__dot" aria-hidden="true"></span>
+            <span class="availability-indicator__text">
+              {{ mainHallAvailability() === 'available' ? 'متاحة' : 'يوجد تعارض' }}
+            </span>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="alternate-hall">القاعة البديلة</label>
+          <div class="searchable-select">
+            <div class="searchable-select__control">
+              <select id="alternate-hall" class="form-control searchable-select__select">
+                @for (option of alternateHalls; track option.value) {
+                  <option [value]="option.value">{{ option.label }}</option>
+                }
+              </select>
+              <i class="pi pi-chevron-down form-control__icon" aria-hidden="true"></i>
+            </div>
+            <button type="button" class="searchable-select__btn" aria-label="بحث عن القاعة البديلة">
+              <i class="pi pi-search" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="pricing-type">نوع التسعير</label>
+          <div class="form-control-wrap">
+            <select id="pricing-type" class="form-control">
+              @for (option of pricingTypes; track option.value) {
+                <option [value]="option.value" [selected]="option.value === defaultPricingType">
+                  {{ option.label }}
+                </option>
+              }
+            </select>
+            <i class="pi pi-chevron-down form-control__icon" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="setup-style">أسلوب التجهيز</label>
+          <div class="searchable-select">
+            <div class="searchable-select__control">
+              <select id="setup-style" class="form-control searchable-select__select">
+                @for (option of setupStyles; track option.value) {
+                  <option [value]="option.value">{{ option.label }}</option>
+                }
+              </select>
+              <i class="pi pi-chevron-down form-control__icon" aria-hidden="true"></i>
+            </div>
+            <button type="button" class="searchable-select__btn" aria-label="بحث عن أسلوب التجهيز">
+              <i class="pi pi-search" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="hall-rent-value">قيمة إيجار القاعة</label>
+          <input
+            id="hall-rent-value"
+            class="form-control form-control--readonly"
+            type="text"
+            value="18,500 ريال"
+            readonly
+          />
+        </div>
+      </div>
+    </article>
   </div>
 </section>
