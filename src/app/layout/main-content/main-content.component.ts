@@ -1,4 +1,5 @@
 import { Component, signal } from '@angular/core';
+import { ActionBarComponent } from '../action-bar/action-bar.component';
 
 interface BreadcrumbItem {
   label: string;
@@ -12,6 +13,7 @@ interface SelectOption {
 
 @Component({
   selector: 'app-main-content',
+  imports: [ActionBarComponent],
   templateUrl: './main-content.component.html',
   styleUrl: './main-content.component.scss',
 })
