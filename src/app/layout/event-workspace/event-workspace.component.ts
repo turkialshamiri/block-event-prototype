@@ -61,10 +61,25 @@ export class EventWorkspaceComponent {
     { label: 'مخصص', value: 'custom' },
   ];
 
+  protected readonly revenueTypes: SelectOption[] = [
+    { label: 'إيراد القاعة', value: 'hall' },
+    { label: 'إيراد الضيافة', value: 'catering' },
+    { label: 'باقة شاملة', value: 'package' },
+    { label: 'إيراد مختلط', value: 'mixed' },
+  ];
+
+  protected readonly attendanceKpis = [
+    { label: 'الحضور المتوقع', value: '250' },
+    { label: 'الحد الأدنى المضمون', value: '200' },
+    { label: 'الإيراد المتوقع', value: '25,000 ريال' },
+    { label: 'نسبة الخصم', value: '10%' },
+  ];
+
   protected readonly defaultEventStatus = 'confirmed';
   protected readonly defaultEventType = 'wedding';
   protected readonly defaultMainHall = 'royal-hall';
   protected readonly defaultPricingType = 'package';
+  protected readonly defaultRevenueType = 'package';
 
   protected readonly mainHallAvailability = signal<HallAvailability>('available');
 
