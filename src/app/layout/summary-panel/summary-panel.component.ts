@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { LayoutUiService } from '../../core/layout-ui.service';
 
 interface SummaryItem {
   label: string;
@@ -13,6 +14,8 @@ interface SummaryItem {
   styleUrl: './summary-panel.component.scss',
 })
 export class SummaryPanelComponent {
+  protected readonly layoutUi = inject(LayoutUiService);
+
   protected readonly items: SummaryItem[] = [
     { label: 'الشركة', value: 'شركة الأفق للمناسبات', icon: 'pi pi-briefcase' },
     { label: 'جهة الاتصال', value: 'أحمد محمد', icon: 'pi pi-user' },

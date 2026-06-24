@@ -1,4 +1,5 @@
-import { Component, signal } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { LayoutUiService } from '../../core/layout-ui.service';
 import { ActionBarComponent } from '../action-bar/action-bar.component';
 import { EventWorkspaceComponent } from '../event-workspace/event-workspace.component';
 
@@ -19,6 +20,10 @@ interface SelectOption {
   styleUrl: './main-content.component.scss',
 })
 export class MainContentComponent {
+  private readonly layoutUi = inject(LayoutUiService);
+
+  protected readonly showEventWorkspace = this.layoutUi.showEventWorkspace;
+
   protected readonly breadcrumbs: BreadcrumbItem[] = [
     { label: 'الرئيسية' },
     { label: 'إدارة الحجوزات' },
@@ -101,10 +106,9 @@ export class MainContentComponent {
   protected readonly defaultSalesManager = 'mohammed-alotaibi';
 
   protected readonly selectedBlockStatus = signal(this.defaultBlockStatus);
-  protected readonly showEventWorkspace = signal(false);
 
   protected openEventWorkspace(): void {
-    this.showEventWorkspace.set(true);
+    this.layoutUi.showEventWorkspace.set(true);
   }
 
   protected onBlockStatusChange(event: Event): void {

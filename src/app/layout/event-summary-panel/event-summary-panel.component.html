@@ -1,0 +1,43 @@
+@if (layoutUi.showEventWorkspace()) {
+  <aside class="summary-panel event-summary-panel" dir="rtl" aria-label="ملخص الفعالية">
+    <article class="summary-card">
+      <header class="summary-card__header">
+        <h2 class="summary-card__title">ملخص الفعالية</h2>
+        <hr class="summary-card__divider" />
+      </header>
+
+      <ul class="summary-card__list">
+        @for (item of items; track item.label) {
+          <li class="summary-item">
+            <div class="summary-item__icon" aria-hidden="true">
+              <i [class]="item.icon"></i>
+            </div>
+            <div class="summary-item__content">
+              <span class="summary-item__label">{{ item.label }}</span>
+              @if (item.badge) {
+                <span class="summary-item__badge summary-item__badge--green">
+                  {{ item.value }}
+                </span>
+              } @else {
+                <span class="summary-item__value">{{ item.value }}</span>
+              }
+            </div>
+          </li>
+        }
+      </ul>
+
+      <div class="event-summary-progress">
+        <div class="event-summary-progress__header">
+          <span class="event-summary-progress__label">اكتمال البيانات</span>
+          <span class="event-summary-progress__value">{{ completionPercent }}%</span>
+        </div>
+        <div class="event-summary-progress__track" aria-hidden="true">
+          <div
+            class="event-summary-progress__bar"
+            [style.width.%]="completionPercent"
+          ></div>
+        </div>
+      </div>
+    </article>
+  </aside>
+}
