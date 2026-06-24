@@ -1,0 +1,38 @@
+<main class="main-content" dir="rtl">
+  <nav class="breadcrumb" aria-label="مسار التنقل">
+    <ol class="breadcrumb__list">
+      @for (item of breadcrumbs; track item.label; let last = $last) {
+        <li class="breadcrumb__item" [class.breadcrumb__item--active]="item.active">
+          @if (!last) {
+            <span class="breadcrumb__label">{{ item.label }}</span>
+            <i class="pi pi-angle-left breadcrumb__separator" aria-hidden="true"></i>
+          } @else {
+            <span class="breadcrumb__label breadcrumb__label--current" aria-current="page">
+              {{ item.label }}
+            </span>
+          }
+        </li>
+      }
+    </ol>
+  </nav>
+
+  <header class="page-header">
+    <div class="page-header__text">
+      <h1 class="page-header__title">إنشاء Business Block</h1>
+      <p class="page-header__description">
+        إنشاء حجز جماعي أو كتلة غرف لمناسبة أو فعالية
+      </p>
+    </div>
+    <div class="page-header__icon" aria-hidden="true">
+      <i class="pi pi-calendar"></i>
+    </div>
+  </header>
+
+  <section class="content-grid" aria-label="أقسام النموذج">
+    @for (card of cards; track card.title) {
+      <article class="content-card">
+        <h2 class="content-card__title">{{ card.title }}</h2>
+      </article>
+    }
+  </section>
+</main>

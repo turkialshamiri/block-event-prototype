@@ -19,6 +19,6 @@ describe('App', () => {
     await fixture.whenStable();
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('app-navbar')).toBeTruthy();
-    expect(compiled.querySelector('app-sidebar')).toBeTruthy();
+    expect(compiled.querySelector('app-main-content')).toBeTruthy();
   });
 });

@@ -1,0 +1,134 @@
+:host {
+  display: block;
+}
+
+.main-content {
+  margin-top: 80px;
+  margin-right: 280px;
+  min-height: calc(100vh - 80px);
+  padding: 24px;
+  background: #f8fafc;
+  font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+}
+
+.breadcrumb {
+  margin-bottom: 20px;
+}
+
+.breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumb__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.breadcrumb__label {
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #64748b;
+  line-height: 1.4;
+}
+
+.breadcrumb__label--current {
+  color: #1e293b;
+  font-weight: 600;
+}
+
+.breadcrumb__separator {
+  font-size: 12px;
+  color: #cbd5e1;
+}
+
+.content-card__title {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  color: #1e293b;
+}
+
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+.page-header__text {
+  min-width: 0;
+}
+
+.page-header__title {
+  margin: 0;
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: #1e293b;
+  letter-spacing: -0.01em;
+}
+
+.page-header__description {
+  margin: 8px 0 0;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #64748b;
+}
+
+.page-header__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+  border: 1px solid #d4a017;
+  border-radius: 16px;
+  background: #d4a01710;
+  color: #d4a017;
+
+  .pi {
+    font-size: 32px;
+  }
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.content-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 4px 12px rgba(15, 23, 42, 0.04);
+}
+
+@media (max-width: 1024px) {
+  .main-content {
+    margin-right: 72px;
+  }
+
+  .content-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+  }
+}
