@@ -6,18 +6,19 @@
   position: fixed;
   top: 0;
   right: 0;
-  width: 280px;
+  width: var(--ef-sidebar-width);
   height: 100vh;
   display: flex;
   flex-direction: column;
-  background: linear-gradient(180deg, #071a35 0%, #0b2d57 100%);
-  border-top-left-radius: 24px;
-  border-bottom-left-radius: 24px;
-  box-shadow: -2px 0 16px rgba(0, 0, 0, 0.14);
+  background: linear-gradient(180deg, var(--ef-color-navy-deep) 0%, var(--ef-color-navy-mid) 100%);
+  border-top-left-radius: var(--ef-radius-xl);
+  border-bottom-left-radius: var(--ef-radius-xl);
+  box-shadow: var(--ef-shadow-sidebar);
   color: #ffffff;
   overflow: hidden;
   z-index: 1000;
-  font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+  font-family: var(--ef-font-family);
+  transition: width var(--ef-layout-transition);
 }
 
 .sidebar__glow {
@@ -36,8 +37,9 @@
   display: flex;
   align-items: center;
   gap: 14px;
-  padding: 0 20px;
+  padding: 0 var(--ef-space-4);
   flex-shrink: 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .sidebar__logo {
@@ -47,10 +49,13 @@
   width: 44px;
   height: 44px;
   flex-shrink: 0;
+  border-radius: var(--ef-radius-md);
+  background: rgba(212, 160, 23, 0.12);
+  border: 1px solid rgba(212, 160, 23, 0.28);
 
   .pi {
-    font-size: 28px;
-    color: #d4a017;
+    font-size: 22px;
+    color: var(--ef-color-gold);
   }
 }
 
@@ -60,19 +65,19 @@
 
 .sidebar__title {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1.125rem;
   font-weight: 700;
-  line-height: 1.2;
+  line-height: 1.25;
   color: #ffffff;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.01em;
 }
 
 .sidebar__subtitle {
   margin: 4px 0 0;
-  font-size: 0.75rem;
+  font-size: var(--ef-font-xs);
   font-weight: 400;
   line-height: 1.4;
-  color: rgba(255, 255, 255, 0.72);
+  color: rgba(255, 255, 255, 0.68);
 }
 
 .sidebar__nav {
@@ -81,7 +86,7 @@
   flex: 1;
   overflow-y: auto;
   overflow-x: hidden;
-  padding: 8px 12px;
+  padding: var(--ef-space-3) var(--ef-space-2);
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
 
@@ -111,39 +116,45 @@
 .sidebar__link {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: var(--ef-space-2);
   width: 100%;
-  height: 52px;
-  padding: 16px;
-  border: none;
-  border-radius: 14px;
+  height: var(--ef-height-action);
+  padding: 0 var(--ef-space-3);
+  border: 1px solid transparent;
+  border-radius: var(--ef-radius-md);
   background: transparent;
-  color: #ffffff;
-  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: var(--ef-font-base);
   font-weight: 500;
   text-align: right;
   cursor: pointer;
-  transition: transform 300ms ease, background-color 300ms ease, box-shadow 300ms ease;
+  transition:
+    transform var(--ef-transition),
+    background-color var(--ef-transition),
+    border-color var(--ef-transition),
+    box-shadow var(--ef-transition);
 
   &:hover {
-    transform: translateX(-4px) scale(1.02);
+    transform: translateX(-3px);
     background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(255, 255, 255, 0.08);
   }
 
   &--active {
-    background: #d4a017;
+    background: var(--ef-color-gold);
+    border-color: rgba(255, 255, 255, 0.12);
     color: #ffffff;
-    box-shadow: 0 4px 12px rgba(212, 160, 23, 0.28);
+    box-shadow: 0 4px 14px rgba(212, 160, 23, 0.28);
 
     &:hover {
-      background: #d4a017;
-      transform: translateX(-4px) scale(1.02);
+      background: var(--ef-color-gold);
+      transform: translateX(-3px);
     }
   }
 }
 
 .sidebar__icon {
-  font-size: 20px;
+  font-size: 18px;
   width: 20px;
   height: 20px;
   display: inline-flex;
@@ -164,15 +175,15 @@
   z-index: 1;
   display: flex;
   justify-content: center;
-  padding: 16px 12px 20px;
+  padding: var(--ef-space-3) var(--ef-space-2) var(--ef-space-4);
   flex-shrink: 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .sidebar__collapse-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
   width: 44px;
   height: 44px;
   padding: 0;
@@ -181,14 +192,17 @@
   background: transparent;
   color: #ffffff;
   cursor: pointer;
-  transition: transform 300ms ease, background-color 300ms ease, border-color 300ms ease;
+  transition:
+    transform var(--ef-transition),
+    background-color var(--ef-transition),
+    border-color var(--ef-transition);
 
   .pi {
     font-size: 16px;
   }
 
   &:hover {
-    transform: scale(1.02);
+    transform: translateY(-2px);
     background: rgba(255, 255, 255, 0.08);
     border-color: rgba(255, 255, 255, 0.3);
   }
@@ -207,8 +221,6 @@
 }
 
 .sidebar--collapsed {
-  width: 72px;
-
   .sidebar__brand-text,
   .sidebar__label {
     display: none;
@@ -221,10 +233,6 @@
 
   .sidebar__link {
     justify-content: center;
-    padding: 16px 0;
-  }
-
-  .sidebar__collapse-btn {
-    width: 44px;
+    padding: 0;
   }
 }

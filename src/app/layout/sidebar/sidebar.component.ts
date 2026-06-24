@@ -1,4 +1,4 @@
-import { Component, signal } from '@angular/core';
+import { Component, effect, signal } from '@angular/core';
 
 interface SidebarItem {
   label: string;
@@ -14,6 +14,15 @@ interface SidebarItem {
 export class SidebarComponent {
   protected readonly activeItemId = signal('business-blocks');
   protected readonly collapsed = signal(false);
+
+  constructor() {
+    effect(() => {
+      document.documentElement.style.setProperty(
+        '--ef-sidebar-width',
+        this.collapsed() ? '72px' : '280px',
+      );
+    });
+  }
 
   protected readonly menuItems: SidebarItem[] = [
     { id: 'dashboard', label: 'لوحة التحكم', icon: 'pi pi-th-large' },
