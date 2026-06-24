@@ -18,3 +18,69 @@ body {
   font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
   background: #f4f6f9;
 }
+
+/* Hospitality accents (global to avoid component style budget) */
+.content-card,
+.summary-card {
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06), 0 10px 22px rgba(15, 23, 42, 0.06);
+}
+
+.content-card::before,
+.summary-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 36px;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0) 100%);
+  opacity: 0.9;
+  pointer-events: none;
+}
+
+.summary-card::before {
+  height: 32px;
+}
+
+.content-card__header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.content-card__title-icon {
+  color: #d4a017;
+  font-size: 18px;
+}
+
+.form-label--with-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.status-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #cbd5e1;
+  box-shadow: 0 0 0 3px rgba(148, 163, 184, 0.12);
+}
+
+.status-dot--green {
+  background: #22c55e;
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.14);
+}
+
+.status-dot--red {
+  background: #ef4444;
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.14);
+}
+
+.status-dot--orange {
+  background: #f59e0b;
+  box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.14);
+}

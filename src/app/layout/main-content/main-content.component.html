@@ -30,7 +30,10 @@
 
   <section class="content-grid" aria-label="أقسام النموذج">
     <article class="content-card">
-      <h2 class="content-card__title">معلومات المنشأة</h2>
+      <div class="content-card__header">
+        <i class="pi pi-building content-card__title-icon" aria-hidden="true"></i>
+        <h2 class="content-card__title">معلومات المنشأة</h2>
+      </div>
       <div class="form-fields">
         <div class="form-field">
           <label class="form-label" for="property">المنشأة</label>
@@ -84,7 +87,10 @@
     </article>
 
     <article class="content-card">
-      <h2 class="content-card__title">الشركة وجهة الاتصال</h2>
+      <div class="content-card__header">
+        <i class="pi pi-users content-card__title-icon" aria-hidden="true"></i>
+        <h2 class="content-card__title">الشركة وجهة الاتصال</h2>
+      </div>
       <div class="form-fields">
         <div class="form-field">
           <label class="form-label" for="account">الحساب</label>
@@ -123,7 +129,10 @@
     </article>
 
     <article class="content-card">
-      <h2 class="content-card__title">معلومات البلوك</h2>
+      <div class="content-card__header">
+        <i class="pi pi-folder content-card__title-icon" aria-hidden="true"></i>
+        <h2 class="content-card__title">معلومات البلوك</h2>
+      </div>
       <div class="form-fields form-fields--grid">
         <div class="form-field">
           <label class="form-label" for="block-code">رمز البلوك</label>
@@ -137,9 +146,23 @@
         </div>
 
         <div class="form-field">
-          <label class="form-label" for="block-status">حالة البلوك</label>
+          <label class="form-label form-label--with-indicator" for="block-status">
+            حالة البلوك
+            <span
+              class="status-dot"
+              [class.status-dot--green]="selectedBlockStatus() === 'confirmed'"
+              [class.status-dot--red]="selectedBlockStatus() === 'cancelled'"
+              [class.status-dot--orange]="selectedBlockStatus() === 'tentative'"
+              aria-hidden="true"
+            ></span>
+          </label>
           <div class="form-control-wrap">
-            <select id="block-status" class="form-control">
+            <select
+              id="block-status"
+              class="form-control"
+              [value]="selectedBlockStatus()"
+              (change)="onBlockStatusChange($event)"
+            >
               @for (option of blockStatuses; track option.value) {
                 <option [value]="option.value">{{ option.label }}</option>
               }
@@ -153,7 +176,9 @@
           <div class="form-control-wrap">
             <select id="sales-manager" class="form-control">
               @for (option of salesManagers; track option.value) {
-                <option [value]="option.value">{{ option.label }}</option>
+                <option [value]="option.value" [selected]="option.value === defaultSalesManager">
+                  {{ option.label }}
+                </option>
               }
             </select>
             <i class="pi pi-chevron-down form-control__icon" aria-hidden="true"></i>
@@ -165,7 +190,9 @@
           <div class="form-control-wrap">
             <select id="market" class="form-control">
               @for (option of markets; track option.value) {
-                <option [value]="option.value">{{ option.label }}</option>
+                <option [value]="option.value" [selected]="option.value === defaultMarket">
+                  {{ option.label }}
+                </option>
               }
             </select>
             <i class="pi pi-chevron-down form-control__icon" aria-hidden="true"></i>
@@ -189,7 +216,9 @@
           <div class="form-control-wrap">
             <select id="booking-type" class="form-control">
               @for (option of bookingTypes; track option.value) {
-                <option [value]="option.value">{{ option.label }}</option>
+                <option [value]="option.value" [selected]="option.value === defaultBookingType">
+                  {{ option.label }}
+                </option>
               }
             </select>
             <i class="pi pi-chevron-down form-control__icon" aria-hidden="true"></i>
@@ -199,7 +228,10 @@
     </article>
 
     <article class="content-card">
-      <h2 class="content-card__title">المتابعة والقرار</h2>
+      <div class="content-card__header">
+        <i class="pi pi-calendar content-card__title-icon" aria-hidden="true"></i>
+        <h2 class="content-card__title">المتابعة والقرار</h2>
+      </div>
       <div class="form-fields form-fields--grid">
         <div class="form-field">
           <label class="form-label" for="decision-date">تاريخ القرار</label>
