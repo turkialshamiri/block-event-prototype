@@ -13,5 +13,131 @@
 
   <hr class="event-workspace__divider" />
 
-  <div class="event-workspace__layout" aria-label="Event Workspace Layout"></div>
+  <div class="event-workspace__layout" aria-label="Event Workspace Layout">
+    <article class="content-card">
+      <div class="content-card__header">
+        <i class="pi pi-sparkles content-card__title-icon" aria-hidden="true"></i>
+        <h3 class="content-card__title">معلومات الفعالية</h3>
+      </div>
+
+      <div class="form-fields form-fields--grid">
+        <div class="form-field">
+          <label class="form-label" for="event-property">المنشأة</label>
+          <input
+            id="event-property"
+            class="form-control form-control--readonly"
+            type="text"
+            value="فندق الخليج - الرياض"
+            readonly
+          />
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="event-status">حالة الفعالية</label>
+          <div class="form-control-wrap">
+            <select id="event-status" class="form-control">
+              @for (option of eventStatuses; track option.value) {
+                <option [value]="option.value" [selected]="option.value === defaultEventStatus">
+                  {{ option.label }}
+                </option>
+              }
+            </select>
+            <i class="pi pi-chevron-down form-control__icon" aria-hidden="true"></i>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="event-type">نوع الفعالية</label>
+          <div class="searchable-select">
+            <div class="searchable-select__control">
+              <select id="event-type" class="form-control searchable-select__select">
+                @for (option of eventTypes; track option.value) {
+                  <option [value]="option.value" [selected]="option.value === defaultEventType">
+                    {{ option.label }}
+                  </option>
+                }
+              </select>
+              <i class="pi pi-chevron-down form-control__icon" aria-hidden="true"></i>
+            </div>
+            <button type="button" class="searchable-select__btn" aria-label="بحث عن نوع الفعالية">
+              <i class="pi pi-search" aria-hidden="true"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="event-name">اسم الفعالية</label>
+          <input
+            id="event-name"
+            class="form-control"
+            type="text"
+            placeholder="أدخل اسم الفعالية"
+          />
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="event-number">رقم الفعالية</label>
+          <input
+            id="event-number"
+            class="form-control form-control--readonly"
+            type="text"
+            value="EVT-2027-000145"
+            readonly
+          />
+        </div>
+
+        <div class="form-field">
+          <label class="form-label" for="event-sequence">رقم التسلسل</label>
+          <input
+            id="event-sequence"
+            class="form-control"
+            type="number"
+            min="1"
+            value="1"
+          />
+        </div>
+
+        <div class="form-row form-row--schedule">
+          <div class="form-field">
+            <label class="form-label" for="event-date">تاريخ الفعالية</label>
+            <div class="form-control-wrap form-control-wrap--date">
+              <input
+                id="event-date"
+                class="form-control form-control--date"
+                type="date"
+                value="2027-10-15"
+              />
+              <i class="pi pi-calendar form-control__icon" aria-hidden="true"></i>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="event-start-time">وقت البداية</label>
+            <div class="form-control-wrap form-control-wrap--time">
+              <input
+                id="event-start-time"
+                class="form-control form-control--time"
+                type="time"
+                value="18:00"
+              />
+              <i class="pi pi-clock form-control__icon" aria-hidden="true"></i>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <label class="form-label" for="event-end-time">وقت النهاية</label>
+            <div class="form-control-wrap form-control-wrap--time">
+              <input
+                id="event-end-time"
+                class="form-control form-control--time"
+                type="time"
+                value="23:00"
+              />
+              <i class="pi pi-clock form-control__icon" aria-hidden="true"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </article>
+  </div>
 </section>

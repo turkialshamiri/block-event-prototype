@@ -446,8 +446,40 @@ select.form-control {
   min-width: 0;
 }
 
+.form-row--schedule {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--ef-space-3);
+  min-width: 0;
+}
+
 .form-field--nights {
   min-width: 0;
+}
+
+.form-control-wrap--time .form-control--time {
+  padding-right: 40px;
+  padding-left: 40px;
+  text-align: start;
+  direction: rtl;
+  line-height: normal;
+
+  &::-webkit-calendar-picker-indicator {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 100%;
+    cursor: pointer;
+  }
+}
+
+.form-control-wrap--time .form-control__icon {
+  left: 14px;
+  right: auto;
+  z-index: 1;
 }
 
 .searchable-select {
@@ -507,7 +539,12 @@ select.form-control {
 
 @media (max-width: 1024px) {
   .form-fields--grid,
-  .form-row--dates {
+  .form-row--dates,
+  .form-row--schedule {
     grid-template-columns: 1fr;
+  }
+
+  .form-row--schedule {
+    grid-column: auto;
   }
 }

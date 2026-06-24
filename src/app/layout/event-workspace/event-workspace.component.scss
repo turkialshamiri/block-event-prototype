@@ -73,8 +73,14 @@
 }
 
 .event-workspace__layout {
-  min-height: 120px;
   margin-top: var(--ef-space-4);
+  display: grid;
+  gap: var(--ef-space-5);
+  min-width: 0;
+}
+
+.event-workspace__layout > .content-card {
+  padding: var(--ef-space-5);
 }
 
 @media (max-width: 768px) {
